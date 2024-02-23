@@ -55,7 +55,11 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         ''' Test save method '''
-        pass
+        m1 = BaseModel()
+        sleep(0.20)
+        m1_updated = m1.updated_at
+        m1.save()
+        self.assertLess(m1_updated, m1.updated_at)
 
 
 if __name__ == '__main__':
