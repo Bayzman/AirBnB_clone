@@ -15,20 +15,20 @@ class TestFileStorage(unittest.TestCase):
 
     def test_init(self):
         ''' Test init method '''
+        self.my_store = FileStorage()
         self.assertEqual(type(FileStorage()), FileStorage)
 
     def test_file_path(self):
         ''' Test file_path '''
-        self.assertEqual(str, type(FileStorage._FileStorage__file_path))
+        self.assertEqual(str, type(self.my_store.__file_path))
 
     def test_objects(self):
         ''' Test __objects '''
-        self.assertEqual(dict, type(FileStorage._FileStorage__objects))
+        self.assertEqual(dict, type(self.my_store.__objects))
 
     def test_all(self):
         ''' Test all method '''
-        m = models.storage.all()
-        self.assertEqual(dict, type(m))
+        self.assertEqual(len(self.my_store.all()), 13)
 
     def test_new(self):
         ''' Test new method '''
