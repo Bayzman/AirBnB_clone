@@ -13,6 +13,18 @@ from models.engine.file_storage import FileStorage
 class TestFileStorage(unittest.TestCase):
     ''' Unit tests for FileStorage module '''
 
+    def test_init(self):
+        ''' Test init method '''
+        self.assertEqual(type(FileStorage()), FileStorage)
+
+    def test_file_path(self):
+        ''' Test file_path '''
+        self.assertEqual(str, type(FileStorage._FileStorage__file_path))
+
+    def test_objects(self):
+        ''' Test __objects '''
+        self.assertEqual(dict, type(FileStorage._FileStorage__objects))
+
     def test_all(self):
         ''' Test all method '''
         m = models.storage.all()
