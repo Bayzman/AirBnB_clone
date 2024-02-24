@@ -26,7 +26,7 @@ class FileStorage:
 
     def save(self):
         ''' Serializes __objects to a JSON file '''
-        obj = {k: self.__objects[k].to_dict()
+        obj = {k: FileStorage.__objects[k].to_dict()
                for k in FileStorage.__objects.keys()}
 
         with open(self.__file_path, 'w') as f:
@@ -37,7 +37,7 @@ class FileStorage:
             if it exists
         '''
         try:
-            with open(self.__file_path) as f:
+            with open(FileStorage.__file_path) as f:
                 obj_json = json.load(f)
                 for obj in obj_json.values():
                     cls_name = obj['__class__']
