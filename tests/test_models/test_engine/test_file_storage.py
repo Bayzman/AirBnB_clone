@@ -41,7 +41,14 @@ class TestFileStorage(unittest.TestCase):
     def test_save(self):
         ''' Test save method '''
         m = BaseModel()
+        m2 = BaseModel()
         self.my_store.new(m)
+        models.storage.new(m2)
+        models.storage.save()
+        save_text = ''
+        with open('file.json', 'r') as f:
+            save_text = f.read()
+            self.assertIn('BaseModel.' + m2.id, save_text)
         m.save()
         new_store = FileStorage()
         new_store.reload()
