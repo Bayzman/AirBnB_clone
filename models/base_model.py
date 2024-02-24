@@ -26,8 +26,7 @@ class BaseModel:
                 else:
                     self.__dict__[key] = value
         else:
-            #models.storage.new(self)
-            pass
+            models.storage.new(self)
 
     def __str__(self):
         ''' Alternative to the print statement. Returns the str
@@ -42,7 +41,7 @@ class BaseModel:
             current datetime
         '''
         self.updated_at = datetime.now()
-        #models.storage.save()
+        models.storage.save()
 
     def to_dict(self):
         ''' Returns a dictionary containing all keys/values of __dict__
