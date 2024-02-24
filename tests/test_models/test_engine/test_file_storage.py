@@ -5,6 +5,7 @@ import os
 import json
 import models
 import unittest
+from unittest.mock import mock_open, patch
 from datetime import datetime
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
@@ -16,6 +17,9 @@ class TestFileStorage(unittest.TestCase):
     def test_init(self):
         ''' Test init method '''
         self.my_store = FileStorage()
+        self.file_path = 'test_file.json'
+        FileStorage.__file_path = self.file_path
+        FileStorage.__objects = self.objects
         self.assertIsInstance(models.storage, FileStorage)
 
     def test_file_path(self):
@@ -38,18 +42,14 @@ class TestFileStorage(unittest.TestCase):
         self.assertIn('BaseModel.'+ m.id, models.storage.all().keys())
         self.assertIn(m, models.storage.all().values())
 
+    @patch('builtins.open', new_callable=mock_open)
+    @patch('json.dump')
     def test_save(self):
         ''' Test save method '''
         m = BaseModel()
-        m2 = BaseModel()
-        self.my_store.new(m)
-        models.storage.new(m2)
-        models.storage.save()
-        save_text = ''
-        with open('file.json', 'r') as f:
-            save_text = f.read()
-            self.assertIn('BaseModel.' + m2.id, save_text)
         m.save()
+        mock_open.assert_called_once_with(self.file_path, 'w')
+        mock_json_dump.assert_called_once_with(self.objects, mock_open())
         new_store = FileStorage()
         new_store.reload()
         objects = new_store.all()
