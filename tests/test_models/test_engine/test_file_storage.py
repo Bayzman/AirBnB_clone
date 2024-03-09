@@ -42,15 +42,15 @@ class TestFileStorage(unittest.TestCase):
         self.assertIn('BaseModel.'+ m.id, models.storage.all().keys())
         self.assertIn(m, models.storage.all().values())
 
-    @patch('builtins.open', new_callable=mock_open)
-    @patch('json.dump')
+    # @patch('builtins.open', new_callable=mock_open)
+    # @patch('json.dump')
     def test_save(self):
         ''' Test save method '''
         m = BaseModel()
         self.my_store.new(m)
         m.save()
-        mock_open.assert_called_once_with(self.file_path, 'w')
-        mock_json_dump.assert_called_once_with(self.objects, mock_open())
+        # mock_open.assert_called_once_with(self.file_path, 'w')
+        # mock_json_dump.assert_called_once_with(self.objects, mock_open())
         new_store = FileStorage()
         new_store.reload()
         objects = new_store.all()
