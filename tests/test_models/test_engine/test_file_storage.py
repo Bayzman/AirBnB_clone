@@ -44,7 +44,7 @@ class TestFileStorage(unittest.TestCase):
 
     # @patch('builtins.open', new_callable=mock_open)
     # @patch('json.dump')
-    def test_save(self):
+    def test_save_1(self):
         ''' Test save method '''
         m = BaseModel()
         self.my_store.new(m)
@@ -58,6 +58,16 @@ class TestFileStorage(unittest.TestCase):
         obj_key = f'{type(m).__name__}.{m.id}'
         self.my_store.reload()
         self.assertIn(obj_key, objects)
+
+    def test_save_2(self):
+        """ Test save method """
+        path = FileStorage.__file_path
+
+        new_obj = {k: FileStorage.__objects[k].to_dict()
+                   for k in FileStorage.__objects.keys()}
+
+        with open(path, 'w') as f:
+            json.dump(new_obj, f)
 
     def test_reload(self):
         ''' Test reload method '''
