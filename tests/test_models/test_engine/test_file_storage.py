@@ -47,6 +47,7 @@ class TestFileStorage(unittest.TestCase):
     def test_save(self):
         ''' Test save method '''
         m = BaseModel()
+        self.my_store.new(m)
         m.save()
         mock_open.assert_called_once_with(self.file_path, 'w')
         mock_json_dump.assert_called_once_with(self.objects, mock_open())
