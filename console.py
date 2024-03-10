@@ -42,7 +42,7 @@ class HBNBCommand(cmd.Cmd):
                 cls_instance = BaseModel()
 
             cls_instance.save()
-            print(cls_instance)
+            print(cls_instance.id)
 
     def do_show(self, args):
         """ Prints the string representation of an instance """
