@@ -189,26 +189,26 @@ class HBNBCommand(cmd.Cmd):
             except Exception as e:
                 print(e)
 
-        if (args_len > 4:
+        if (args_len > 4):
             return
 
-            obj_name, obj_id, attr_name, value = args.split()
+        obj_name, obj_id, attr_name, value = args.split()
 
-            if obj_name not in HBNBCommand.__classes:
-                print('** class doesn\'t exist **')
+        if obj_name not in HBNBCommand.__classes:
+            print('** class doesn\'t exist **')
+            return
+
+        key = '.'.join([obj_name, obj_id])
+
+        try:
+            obj = c_dict.get(key)
+            if obj:
+                setattr(obj, attr_name, value)
+                obj.save()
+
+            else:
+                print('** no instance found **')
                 return
-
-            key = '.'.join([obj_name, obj_id])
-
-            try:
-                obj = c_dict.get(key)
-                if obj:
-                    setattr(obj, attr_name, value)
-                    obj.save()
-
-                else:
-                    print('** no instance found **')
-                    return
             except Exception as e:
                 print(e)
                 print('** no instance found **')
