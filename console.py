@@ -1,14 +1,18 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """ Contains the entry point of the command interpreter """
 
+import cmd
+import json
+import datetime
 from models.base_model import BaseModel
 from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
     """ Contains the entry point of the command interpreter """
+    __classes = ['BaseModel']
 
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
 
     def c_quit(self, arg):
         """ Quit command to exit program """
@@ -204,5 +208,5 @@ class HBNBCommand(cmd.Cmd):
                 return
 
 
-    if __name__ == '__main__':
-        HBNBCommand().cmdloop()
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
