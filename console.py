@@ -58,8 +58,8 @@ class HBNBCommand(cmd.Cmd):
         elif (args_len > 2):
             return
 
-        obj_name = args_list[0]
-        obj_id = args_list[1]
+        obj_name = args.split()[0]
+        obj_id = args.split()[1]
 
         if obj_name not in HBNBCommand.__classes:
             print('** class doesn\'t exist **')
