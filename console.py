@@ -14,16 +14,15 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
-    def c_quit(self, arg):
+    def do_quit(self, args):
         """ Quit command to exit program """
-
         return True
 
-    def c_EOF(self, arg):
+    def do_EOF(self, args):
         """ Exit the console at end of file """
         raise systemExit
 
-    def create(self, args):
+    def do_create(self, args):
         """ Creates a new instance """
         if not args:
             return
@@ -39,7 +38,7 @@ class HBNBCommand(cmd.Cmd):
             cls_instance.save()
             print(cls_instance)
 
-    def show(self, args):
+    def do_show(self, args):
         """ Prints the string representation of an instance """
         args_len = len(args.split())
         if (args_len == 0):
@@ -69,7 +68,7 @@ class HBNBCommand(cmd.Cmd):
             print('** no instance found **')
             return
 
-    def destroy(self, args):
+    def do_destroy(self, args):
         """ Deletes an instance based on the class name and id """
         args_len = len(args.split())
 
@@ -99,7 +98,7 @@ class HBNBCommand(cmd.Cmd):
             print('** no instance found **')
             return
 
-    def all(self, args):
+    def do_all(self, args):
         """ Print all the content in the dictionary """
         c_dict = storage.all()
         c_list = []
@@ -121,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
             print(c_list)
             return
 
-    def c_count(self, args):
+    def do_count(self, args):
         """ Counts the number of instances of a class """
         c_dict = storage.all()
         c_list = []
@@ -144,7 +143,7 @@ class HBNBCommand(cmd.Cmd):
             count_instances = len(c_list_dict.values)
             print(count_instances)
 
-    def update(self, args):
+    def do_update(self, args):
         """ Updates an instance based on the class name and id """
         c_dict = storage.all()
         args_len = len(args.split())
