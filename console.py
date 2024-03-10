@@ -31,7 +31,9 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, args):
         """ Creates a new instance """
         if not args:
+            print('** class name missing **')
             return
+
         cls_name = args.split()[0]
 
         if cls_name not in HBNBCommand.__classes:
