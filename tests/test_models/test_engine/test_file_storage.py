@@ -59,16 +59,6 @@ class TestFileStorage(unittest.TestCase):
         self.my_store.reload()
         self.assertIn(obj_key, objects)
 
-    def test_save_2(self):
-        """ Test save method """
-        path = FileStorage.__file_path
-
-        new_obj = {k: FileStorage.__objects[k].to_dict()
-                   for k in FileStorage.__objects.keys()}
-
-        with open(path, 'w') as f:
-            json.dump(new_obj, f)
-
     def test_reload(self):
         ''' Test reload method '''
         m = BaseModel()
