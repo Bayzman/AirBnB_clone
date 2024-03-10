@@ -189,7 +189,7 @@ class HBNBCommand(cmd.Cmd):
             except Exception as e:
                 print(e)
 
-        if (args_len > 4):
+        else:
             return
 
         obj_name, obj_id, attr_name, value = args.split()
