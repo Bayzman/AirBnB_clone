@@ -22,6 +22,12 @@ class HBNBCommand(cmd.Cmd):
         """ Exit the console at end of file """
         raise systemExit
 
+    def emptyline(self):
+        """When an empty line + ENTER shouldn’t
+        execute anything
+        """
+        pass
+
     def do_create(self, args):
         """ Creates a new instance """
         if not args:
@@ -47,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
         elif (args_len == 1):
             print('** instance id missing **')
             return
-        else:
+        elif (args_len > 2):
             return
 
         obj_name = args_list[0]
@@ -78,7 +84,7 @@ class HBNBCommand(cmd.Cmd):
         elif (args_len == 1):
             print('** instance id missing **')
             return
-        else:
+        elif (args_len > 2):
             return
 
         obj_name = args.split()[0]
