@@ -6,11 +6,12 @@ import json
 import datetime
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
     """ Contains the entry point of the command interpreter """
-    __classes = ['BaseModel']
+    __classes = ['BaseModel', 'User']
 
     prompt = "(hbnb) "
 
