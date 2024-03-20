@@ -43,6 +43,8 @@ class HBNBCommand(cmd.Cmd):
         else:
             if cls_name == 'BaseModel':
                 cls_instance = BaseModel()
+            if cls_name == 'User':
+                cls_instance = User()
 
             cls_instance.save()
             print(cls_instance.id)
