@@ -13,7 +13,6 @@ class TestUser(unittest.TestCase):
         """ Test email attribute """
         user1 = User()
         user2 = User()
-        user1.email = ''
         user2.email = 'admin@alx.com'
         self.assertEqual(user1.email, '')
         self.assertEqual(user2.email, 'admin@alx.com')
