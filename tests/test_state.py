@@ -2,10 +2,10 @@
 
 """ Unit test for State """
 
+import models
 from models.base_model import BaseModel
 from models.state import State
 import unittest
-from datetime import datetime, date
 
 
 class TestState(unittest.TestCase):
