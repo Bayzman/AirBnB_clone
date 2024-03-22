@@ -7,7 +7,7 @@ from models.place import Place
 import unittest
 
 
-class TestPlace(unittest.Testcase):
+class TestPlace(unittest.TestCase):
     """ Unit test for Place """
 
     def test_place_instance(self):
