@@ -15,6 +15,7 @@ class TestBaseModel(unittest.TestCase):
     def test_init(self):
         ''' Test init method '''
         m1 = BaseModel()
+        self.assertIsInstance(m1, BaseModel)
         self.assertIsNotNone(m1.id)
         self.assertIsInstance(m1.created_at, datetime)
 
