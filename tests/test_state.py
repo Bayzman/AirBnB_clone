@@ -2,9 +2,9 @@
 
 """ Unit test for State """
 
+import unittest
 from models.base_model import BaseModel
 from models.state import State
-import unittest
 
 
 class TestState(unittest.TestCase):
