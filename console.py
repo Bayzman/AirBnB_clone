@@ -11,7 +11,8 @@ from models.user import User
 
 class HBNBCommand(cmd.Cmd):
     """ Contains the entry point of the command interpreter """
-    __classes = ['BaseModel', 'User']
+    __classes = ['BaseModel', 'User', 'State', 'City', 'Place',
+                 'Amenity', 'Review']
 
     prompt = "(hbnb) "
 
@@ -45,6 +46,16 @@ class HBNBCommand(cmd.Cmd):
                 cls_instance = BaseModel()
             if cls_name == 'User':
                 cls_instance = User()
+            if cls_name == 'State':
+                cls_instance = State()
+            if cls_name == 'City':
+                cls_instance = City()
+            if cls_name == 'Place':
+                cls_instance = Place()
+            if cls_name == 'Amenity':
+                cls_instance = Amenity()
+            if cls_name == 'Review':
+                cls_instance = Review()
 
             cls_instance.save()
             print(cls_instance.id)
