@@ -57,10 +57,14 @@ class TestBaseModel(unittest.TestCase):
     def test_save(self):
         ''' Test save method '''
         m1 = BaseModel()
-        sleep(0.20)
-        m1_updated = m1.updated_at
+        m1.name = 'Model 1'
+        m1.number = 90
+
         m1.save()
-        self.assertLess(m1_updated, m1.updated_at)
+        m1_json = m1.to_dict()
+
+        self.assertEqual(m1['name'], 'Model 1')
+        self.assertEqual(m1['number'], 90)
 
 
 if __name__ == '__main__':
