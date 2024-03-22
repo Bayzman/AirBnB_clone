@@ -24,5 +24,5 @@ class TestState(unittest.TestCase):
         self.assertEqual(state2.name, 'Abia')
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
