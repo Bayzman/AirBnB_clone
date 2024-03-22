@@ -63,8 +63,8 @@ class TestBaseModel(unittest.TestCase):
         m1.save()
         m1_json = m1.to_dict()
 
-        self.assertEqual(m1['name'], 'Model 1')
-        self.assertEqual(m1['number'], 90)
+        self.assertEqual(m1_json['name'], 'Model 1')
+        self.assertEqual(m1_json['number'], 90)
 
 
 if __name__ == '__main__':
