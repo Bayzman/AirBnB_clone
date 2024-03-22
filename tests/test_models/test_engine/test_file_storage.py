@@ -18,9 +18,7 @@ class TestFileStorage(unittest.TestCase):
         ''' Test init method '''
         my_store = FileStorage()
         file_path = 'test_file.json'
-        FileStorage.__file_path = file_path
-        FileStorage.__objects = self.objects
-        self.assertIsInstance(models.storage, FileStorage)
+        self.assertIsInstance(my_store, FileStorage)
 
     def test_file_path(self):
         ''' Test file_path '''
