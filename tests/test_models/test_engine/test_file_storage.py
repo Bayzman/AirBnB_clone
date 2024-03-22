@@ -16,24 +16,27 @@ class TestFileStorage(unittest.TestCase):
 
     def test_init(self):
         ''' Test init method '''
-        self.my_store = FileStorage()
-        self.file_path = 'test_file.json'
-        FileStorage.__file_path = self.file_path
+        my_store = FileStorage()
+        file_path = 'test_file.json'
+        FileStorage.__file_path = file_path
         FileStorage.__objects = self.objects
         self.assertIsInstance(models.storage, FileStorage)
 
     def test_file_path(self):
         ''' Test file_path '''
-        self.assertEqual(type(self.my_store.all()), dict)
-        self.assertEqual(str, type(self.my_store.__file_path))
+        my_store = FileStorage()
+        self.assertEqual(type(my_store.all()), dict)
+        self.assertEqual(str, type(my_store.__file_path))
 
     def test_objects(self):
         ''' Test __objects '''
-        self.assertEqual(dict, type(self.my_store.__objects))
+        my_store = FileStorage()
+        self.assertEqual(dict, type(my_store.__objects))
 
     def test_all(self):
         ''' Test all method '''
-        self.assertEqual(len(self.my_store.all()), 12)
+        my_store = FileStorage()
+        self.assertEqual(len(my_store.all()), 12)
 
     def test_new(self):
         ''' Test new method '''
@@ -47,7 +50,8 @@ class TestFileStorage(unittest.TestCase):
     def test_save_1(self):
         ''' Test save method '''
         m = BaseModel()
-        self.my_store.new(m)
+        my_store = FileStorage()
+        my_store.new(m)
         m.save()
         # mock_open.assert_called_once_with(self.file_path, 'w')
         # mock_json_dump.assert_called_once_with(self.objects, mock_open())
@@ -56,7 +60,7 @@ class TestFileStorage(unittest.TestCase):
         objects = new_store.all()
         self.assertEqual(len(objects), 13)
         obj_key = f'{type(m).__name__}.{m.id}'
-        self.my_store.reload()
+        my_store.reload()
         self.assertIn(obj_key, objects)
 
     def test_reload(self):
