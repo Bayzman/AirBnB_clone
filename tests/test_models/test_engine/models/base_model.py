@@ -4,7 +4,7 @@
 
 import uuid
 from datetime import datetime
-from .. import storage
+from . import storage
 
 
 class BaseModel:

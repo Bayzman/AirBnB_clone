@@ -15,3 +15,4 @@ cat > "${ROOTDIR}/AUTHORS" <<- EOF
 
 	$(git -C "$ROOTDIR" log --format='%aN <%aE>' | LC_ALL=C.UTF-8 sort -uf)
 EOF
+pwd
