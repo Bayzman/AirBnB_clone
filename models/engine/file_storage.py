@@ -33,8 +33,8 @@ class FileStorage:
         """
         if os.path.exists(self.__file_path):
             with open(self.__file_path, 'r') as f:
-                self.__objects = {}
-                for key, obj_dict in json.load(f).items():
-                    obj_class = obj_dict["__class__"]
-                    obj = obj_class(**obj_dict)
+                obj_json = json.load(f)
+                for obj in obj_json.values():
+                    obj_class = obj["__class__"]
+                    obj = obj_class(**obj)
                     self.new(obj)
