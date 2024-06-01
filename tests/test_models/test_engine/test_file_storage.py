@@ -18,7 +18,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_all(self):
         """ Test all method """
-        self.assertEqual(self.storage.all(), None)
+        self.assertEqual(self.storage.all(), {})
 
     def test_new(self):
         """ Test the new method """
