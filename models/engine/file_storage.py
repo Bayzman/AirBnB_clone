@@ -35,6 +35,6 @@ class FileStorage:
             with open(self.__file_path, 'r') as f:
                 self.__objects = {}
                 for key, obj_dict in json.load(f).items():
-                    obj_class = globals()[obj_dict["__class__"]]
+                    obj_class = obj_dict["__class__"]
                     obj = obj_class(**obj_dict)
                     self.new(obj)
