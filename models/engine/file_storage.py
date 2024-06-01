@@ -43,5 +43,5 @@ class FileStorage:
                 obj_json = json.load(f)
                 for obj in obj_json.values():
                     obj_class = obj["__class__"]
-                    del obj['__class__']
+                    # del obj['__class__']
                     self.new(eval(obj_class)(**obj))
