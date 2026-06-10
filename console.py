@@ -150,13 +150,19 @@ class HBNBCommand(cmd.Cmd):
             return
 
     def default(self, line):
-        """Handle commands like <class name>.all()"""
+        """Handle commands like <class name>.command()"""
         if '.all()' in line:
             class_name = line.split('.')[0]
             if class_name in HBNBCommand.__classes:
                 self.do_all(class_name)
             else:
-                print('** class does not exist **')
+                print(f'** class {class_name} does not exist **')
+        elif '.count()' in line:
+            class_name = line.split('.')[0]
+            if class_name in HBNBCommand.__classes:
+                self.do_count(class_name)
+            else:
+                print(f'** class {class_name} does not exist **')
         else:
             print(f'*** Unknown syntax: {line}')
 
@@ -164,6 +170,7 @@ class HBNBCommand(cmd.Cmd):
         """ Counts the number of instances of a class """
         c_dict = storage.all()
         c_list = []
+        count = 0
 
         if not args:
             c_list = [str(value) for value in c_dict.values()]
@@ -178,10 +185,11 @@ class HBNBCommand(cmd.Cmd):
             for value in c_dict.values():
                 if (value.__class__.__name__ == args):
                     c_list.append(str(value))
+                    count += 1
 
-            c_list_dict = dict(c_list)
-            count_instances = len(c_list_dict.values)
-            print(count_instances)
+            # c_list_dict = dict(c_list)
+            # count_instances = len(c_list_dict.values)
+            print(count)
 
     def do_update(self, args):
         """ Updates an instance based on the class name and id """
