@@ -27,7 +27,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, args):
         """ Exit the console at end of file """
-        raise systemExit
+        print()
+        return True
 
     def emptyline(self):
         """When an empty line + ENTER shouldn’t
