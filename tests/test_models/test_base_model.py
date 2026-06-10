@@ -33,6 +33,7 @@ class TestBaseModel(unittest.TestCase):
         self.bm.save()
         self.assertNotEqual(self.bm.updated_at, updated_at)
         self.assertEqual(self.bm.created_at, created_at)
+        self.assertIsInstance(updated_at, datetime)
 
     def test_to_dict(self):
         """ Test to_dict """
