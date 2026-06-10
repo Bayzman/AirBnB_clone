@@ -149,6 +149,17 @@ class HBNBCommand(cmd.Cmd):
             print(c_list)
             return
 
+    def default(self, line):
+        """Handle commands like <class name>.all()"""
+        if '.all()' in line:
+            class_name = line.split('.')[0]
+            if class_name in HBNBCommand.__classes:
+                self.do_all(class_name)
+            else:
+                print('** class does not exist **')
+        else:
+            print(f'*** Unknown syntax: {line}')
+
     def do_count(self, args):
         """ Counts the number of instances of a class """
         c_dict = storage.all()
