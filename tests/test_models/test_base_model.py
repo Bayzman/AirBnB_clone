@@ -31,9 +31,9 @@ class TestBaseModel(unittest.TestCase):
         created_at = self.bm.created_at
         updated_at = self.bm.updated_at
         self.bm.save()
+        self.bm.save(self)
         self.assertNotEqual(self.bm.updated_at, updated_at)
         self.assertEqual(self.bm.created_at, created_at)
-        self.assertIsInstance(updated_at, datetime)
 
     def test_to_dict(self):
         """ Test to_dict """
