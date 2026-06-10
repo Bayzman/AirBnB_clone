@@ -163,6 +163,13 @@ class HBNBCommand(cmd.Cmd):
                 self.do_count(class_name)
             else:
                 print(f'** class {class_name} does not exist **')
+        elif '.show(' in line  and ')' in line:
+            class_name = line.split('.')[0]
+            start_idx = line.find('(') + 1
+            end_idx = line.find(')')
+            obj_id = line[start_idx:end_idx].strip('"\'')
+            if class_name in HBNBCommand.__classes:
+                self.do_show(f'{class_name} {obj_id}')
         else:
             print(f'*** Unknown syntax: {line}')
 
